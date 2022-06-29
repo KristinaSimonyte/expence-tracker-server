@@ -9,6 +9,6 @@
     "ecmaVersion": "latest"
   },
   "rules": {
-    
+    "newline-per-chained-call": "warn"
   }
 }
