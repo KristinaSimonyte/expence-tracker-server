@@ -1,31 +1,67 @@
-const Joi = require('joi');
 const mysql = require('mysql2/promise');
-const { dbConfig } = require('../config');
+const { dbConfig, jwtSecret } = require('../config');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 
-const userSchema = Joi.object({
-    email: Joi.string().email().min(7).max(100).lowercase().trim().required(),
-    password: Joi.string().min(6).max(100).trim().required(),
-});
+const tableName = 'users';
 
-async function userRegisterDB (email, password) {
-    try {
+async function userRegisterDB(email, password) {
+  try {
     const connection = await mysql.createConnection(dbConfig);
     const sqlQuery = `
-        INSERT INTO users (email, password)
+        INSERT INTO ${tableName} (email, password)
         VALUES (${mysql.escape(email)}, '${password}')
         `;
-    const [data] = await connection.execute(sqlQuery);
+    const [data] = await connection.execute(sqlQuery, [email, password]);
+    await connection.close();
+
     if (!data.insertId) {
-      return false
-    } return { userID: data.insertId}
-} catch (error) {
+      return false;
+    }
+    return { userID: data.insertId };
+  } catch (error) {
     console.log(error);
     return false;
+  }
 }
 
+async function userLoginDB(email, password) {
+  try {
+    const connection = await mysql.createConnection(dbConfig);
+    const sqlQuery = `
+          SELECT * FROM ${tableName} 
+          WHERE email = (${mysql.escape(email)})
+          LIMIT 1
+          `;
+    const [data] = await connection.execute(sqlQuery, [email]);
+    await connection.close();
+    if (data.length !== 1) {
+      return res.status(400).send({ err: 'Email or password incorrect' });
+    }
+
+    const passwordComparison = bcrypt.compareSync(
+      password,
+      data[0].password
+    );
+
+    if (!passwordComparison) {
+      return false;
+    }
+console.log(jwtSecret);
+    const token = jwt.sign({ userId: data[0].id }, jwtSecret);
+
+    return {
+        msg: 'Successfully logged in',
+        token,
+    }
+
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
 }
 
 module.exports = {
-    userSchema,
-    userRegisterDB,
+  userRegisterDB,
+  userLoginDB,
 };

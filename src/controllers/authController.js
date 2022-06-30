@@ -1,28 +1,25 @@
-const bcrypt = require('bcryptjs');
-const { userRegisterDB } = require('../models/authModel');
+const { successResponse, failResponse } = require('../helpers/dbHelper');
+const { hashPass, generateJwtToken } = require('../helpers/helpers');
+const { userRegisterDB, userLoginDB } = require('../models/authModel');
 
-async function userRegister(req, res) {
-  try {
-    const hashedPass = bcrypt.hashSync(req.body.password, 10);
-    const data = await userRegisterDB(req.body.email, hashedPass);
-    if (!data) {
-      return res
-        .status(500)
-        .send('Something went wrong, please check entered data');
-    }
+async function register(req, res) {
+  const { email, password } = req.body;
+  const hashedPassword = hashPass(password);
+  const insertResult = await userRegisterDB(email, hashedPassword);
+  return insertResult === false
+    ? failResponse(res)
+    : successResponse(res, 'user created');
+}
+async function login(req, res) {
+  const { email, password } = req.body;
+  const findResults = await userLoginDB(email, password);
+  if (findResults === false) return failResponse(res);
 
-    return res.send({
-      msg: 'Successfully created account',
-      userId: data.userID,
-    });
-  } catch (error) {
-    console.log(error);
-    return res
-      .status(500)
-      .send({ err: 'Something went wrong, please check entered data' });
-  }
+  const token = generateJwtToken(findResults);
+  return successResponse(res, token);
 }
 
 module.exports = {
-  userRegister,
+  register,
+  login,
 };
