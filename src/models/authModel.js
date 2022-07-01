@@ -1,63 +1,65 @@
-const mysql = require('mysql2/promise');
-const { dbConfig, jwtSecret } = require('../config');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const { doQuery, systemError } = require('../helpers/dbHelpers');
+const { jwtSecret } = require('../config');
 
 const tableName = 'users';
 
 async function userRegisterDB(email, password) {
   try {
-    const connection = await mysql.createConnection(dbConfig);
     const sqlQuery = `
         INSERT INTO ${tableName} (email, password)
-        VALUES (${mysql.escape(email)}, '${password}')
+        VALUES (?, ?)
         `;
-    const [data] = await connection.execute(sqlQuery, [email, password]);
-    await connection.close();
+    const [data] = await doQuery(sqlQuery, [email, password]);
 
     if (!data.insertId) {
-      return false;
+      return systemError;
     }
-    return { userID: data.insertId };
+    return { isSuccess: true, userID: data.insertId };
   } catch (error) {
+    if (error.errno === 1062 && error.sqlState === '23000') {
+      return {
+        isSuccess: false,
+        err: 'This email already used',
+      };
+    }
     console.log(error);
-    return false;
+    return systemError;
   }
 }
 
 async function userLoginDB(email, password) {
   try {
-    const connection = await mysql.createConnection(dbConfig);
+
     const sqlQuery = `
           SELECT * FROM ${tableName} 
-          WHERE email = (${mysql.escape(email)})
+          WHERE email = ?
           LIMIT 1
           `;
-    const [data] = await connection.execute(sqlQuery, [email]);
-    await connection.close();
+    const [data] = await doQuery(sqlQuery, [email]);
+
+
     if (data.length !== 1) {
-      return res.status(400).send({ err: 'Email or password incorrect' });
+      return { isSuccess: false, err: 'Email or password incorrect' };
     }
 
-    const passwordComparison = bcrypt.compareSync(
-      password,
-      data[0].password
-    );
+    const passwordComparison = bcrypt.compareSync(password, data[0].password);
 
     if (!passwordComparison) {
-      return false;
+      return { isSuccess: false, err: 'Email or password incorrect' };
     }
-console.log(jwtSecret);
+
     const token = jwt.sign({ userId: data[0].id }, jwtSecret);
 
     return {
-        msg: 'Successfully logged in',
-        token,
-    }
-
+      isSuccess: true,
+      msg: 'Successfully logged in',
+      token,
+    };
   } catch (error) {
     console.log(error);
-    return false;
+    return systemError;
   }
 }
 

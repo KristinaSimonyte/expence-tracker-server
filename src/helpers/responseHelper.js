@@ -11,7 +11,16 @@ function failResponse(res, err = 'Something went wrong', status = 500) {
   });
 }
 
+function makeResponce(res, repData, additionalMessage) {
+  return !repData.isSuccess
+    ? failResponse(res, repData.err)
+    : successResponse(
+        res,
+        !!additionalMessage ? additionalMessage : repData.msg
+      );
+}
 module.exports = {
   successResponse,
   failResponse,
+  makeResponce,
 };

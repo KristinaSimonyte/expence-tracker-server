@@ -19,3 +19,99 @@ Content-Type: application/json
 }
 
 ###
+
+GET http://localhost:8080/groups
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2NTY2OTQzMzN9.7bRzMbhG5qNIWyCMAE0ofMwIW9Ffw6y3pmCBskvjDJg
+###
+
+GET http://localhost:8080/groups/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2NTY2OTQzMzN9.7bRzMbhG5qNIWyCMAE0ofMwIW9Ffw6y3pmCBskvjDJg
+###
+
+###
+
+PUT http://localhost:8080/groups
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2NTY2OTQzMzN9.7bRzMbhG5qNIWyCMAE0ofMwIW9Ffw6y3pmCBskvjDJg
+
+{
+  "id": 6,
+  "type": "OUTCOME",
+  "title": "Restaurants"
+}
+
+###
+
+###
+
+POST http://localhost:8080/groups
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2NTY2OTcxMDZ9.D7ANNPVbHM3Ct_ONn3sbQ7XgLh7Bmnt_lI72c6THJ90
+
+{
+  "type": "OUTCOME",
+  "title": "Alcohol Drinks"
+}
+
+###
+
+###
+
+DELETE http://localhost:8080/groups
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2NTY2OTcxMDZ9.D7ANNPVbHM3Ct_ONn3sbQ7XgLh7Bmnt_lI72c6THJ90
+
+{
+  "groupId":1
+}
+
+###
+
+###
+
+GET http://localhost:8080/transactions
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2NTY2OTQzMzN9.7bRzMbhG5qNIWyCMAE0ofMwIW9Ffw6y3pmCBskvjDJg
+###
+
+GET http://localhost:8080/transactions/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2NTY2OTQzMzN9.7bRzMbhG5qNIWyCMAE0ofMwIW9Ffw6y3pmCBskvjDJg
+###
+
+###
+
+PUT http://localhost:8080/transactions
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2NTY2OTQzMzN9.7bRzMbhG5qNIWyCMAE0ofMwIW9Ffw6y3pmCBskvjDJg
+
+{
+  "id": 6,
+  "type": "OUTCOME",
+  "title": "Restaurants"
+}
+
+###
+
+###
+
+POST http://localhost:8080/transactions
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2NTY2OTcxMDZ9.D7ANNPVbHM3Ct_ONn3sbQ7XgLh7Bmnt_lI72c6THJ90
+
+{
+  "type": "OUTCOME",
+  "title": "Alcohol Drinks"
+}
+
+###
+
+###
+
+DELETE http://localhost:8080/transactions
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2NTY2OTcxMDZ9.D7ANNPVbHM3Ct_ONn3sbQ7XgLh7Bmnt_lI72c6THJ90
+
+{
+  "transactionId":1
+}
+
+###
