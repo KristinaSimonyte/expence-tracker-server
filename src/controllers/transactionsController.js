@@ -1,45 +1,57 @@
 const { makeResponce } = require('../helpers/ResponseHelper');
-const { insertGroup, updateGroup, queryGroups, queryGroup, removeGroup } = require('../models/groupsModel');
+const {
+  insertTransaction,
+  updateTransaction,
+  removeTransaction,
+  queryTransaction,
+  queryTransactions,
+} = require('../models/transactionsModel');
 
-async function createGroup(req, resp) {
+async function createTransaction(req, resp) {
   const { userId } = req;
-  const { title, type } = req.body;
+  const { groupId, transactionDate, amount, comment } = req.body;
 
-  const insertResult = await insertGroup(userId, type, title);
+  const insertResult = await insertTransaction(
+    userId,
+    groupId,
+    transactionDate,
+    amount,
+    comment
+  );
   return makeResponce(resp, insertResult);
 }
 
-async function modifyGroup(req, resp) {
+async function modifyTransaction(req, resp) {
   const { userId } = req;
-  const { id, title, type } = req.body;
-  const updateResult = await updateGroup(id, userId, type, title);
+  const { id, groupId, transactionDate, amount, comment } = req.body;
+  const updateResult = await updateTransaction(id, userId, groupId, transactionDate, amount, comment);
   return makeResponce(resp, updateResult);
 }
 
-async function deleteGroup(req, resp) {
+async function deleteTransaction(req, resp) {
   const { userId } = req;
-  const { groupId } = req.body;
-  const deleteResult = await removeGroup(userId, groupId);
+  const { transactionId } = req.body;
+  const deleteResult = await removeTransaction(userId, transactionId);
   return makeResponce(resp, deleteResult);
 }
 
-async function listGroups(req, resp) {
+async function listTransactions(req, resp) {
   const { userId } = req;
-  const queryResult = await queryGroups(userId);
-  return makeResponce(resp, queryResult, queryResult.groups);
+  const queryResult = await queryTransactions(userId);
+  return makeResponce(resp, queryResult, queryResult.transactions);
 }
 
-async function getGroup(req, resp) {
+async function getTransaction(req, resp) {
   const { userId } = req;
   const { id } = req.params;
-  const queryResult = await queryGroup(userId, id);
-  return makeResponce(resp, queryResult, queryResult.group);
+  const queryResult = await queryTransaction(userId, id);
+  return makeResponce(resp, queryResult, queryResult.transaction);
 }
 
 module.exports = {
-  getGroup,
-  listGroups,
-  createGroup,
-  modifyGroup,
-  deleteGroup,
+  getTransaction,
+  listTransactions,
+  createTransaction,
+  modifyTransaction,
+  deleteTransaction,
 };

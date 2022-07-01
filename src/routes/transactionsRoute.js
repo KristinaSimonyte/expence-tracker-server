@@ -2,7 +2,7 @@ const express = require('express');
 const {
   createTransaction,
   modifyTransaction,
-  listTransaction,
+  listTransactions,
   getTransaction,
   deleteTransaction,
 } = require('../controllers/transactionsController');
@@ -28,7 +28,7 @@ transactionRoutes.put(
   [validateToken, schemaValidation(transactionSchemaModify)],
   modifyTransaction
 );
-transactionRoutes.get('/', validateToken, listTransaction);
+transactionRoutes.get('/', validateToken, listTransactions);
 transactionRoutes.get('/:id', validateToken, getTransaction);
 transactionRoutes.delete(
   '/',
@@ -36,4 +36,4 @@ transactionRoutes.delete(
   deleteTransaction
 );
 
-module.exports = transactionsRoutes;
+module.exports = transactionRoutes;
