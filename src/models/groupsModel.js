@@ -87,7 +87,7 @@ async function queryGroups(userId) {
     const [data] = await doQuery(sqlQuery, [userId]);
 
     if (data.length < 1) {
-      return noDataFound;
+      return [];
     }
     return { isSuccess: true, groups: data };
   } catch (error) {
