@@ -4,7 +4,7 @@ POST  http://localhost:8080/auth/register
 Content-Type: application/json
 
 {
-  "email": "jonas10@jonas.lt",
+  "email": "jonas1@jonas.lt",
   "password": "jonas123"
 }
 
@@ -14,25 +14,25 @@ POST  http://localhost:8080/auth/login
 Content-Type: application/json
 
 {
-  "email": "jonas10@jonas.lt",
+  "email": "jonas1@jonas.lt",
   "password": "jonas123"
 }
 
 ###
 
 GET http://localhost:8080/groups
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2NTY2OTQzMzN9.7bRzMbhG5qNIWyCMAE0ofMwIW9Ffw6y3pmCBskvjDJg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTY1Njc5MzczNX0.4i33hH9nw8OVXwWiLzyzDGu7FUsIDGuK8fX4x8h5NwI
 ###
 
 GET http://localhost:8080/groups/2
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2NTY2OTQzMzN9.7bRzMbhG5qNIWyCMAE0ofMwIW9Ffw6y3pmCBskvjDJg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTY1Njc5MzczNX0.4i33hH9nw8OVXwWiLzyzDGu7FUsIDGuK8fX4x8h5NwI
 ###
 
 ###
 
 PUT http://localhost:8080/groups
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2NTY2OTQzMzN9.7bRzMbhG5qNIWyCMAE0ofMwIW9Ffw6y3pmCBskvjDJg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTY1Njc5MzczNX0.4i33hH9nw8OVXwWiLzyzDGu7FUsIDGuK8fX4x8h5NwI
 
 {
   "id": 6,
@@ -46,11 +46,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpY
 
 POST http://localhost:8080/groups
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2NTY2OTcxMDZ9.D7ANNPVbHM3Ct_ONn3sbQ7XgLh7Bmnt_lI72c6THJ90
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTY1Njc5MzczNX0.4i33hH9nw8OVXwWiLzyzDGu7FUsIDGuK8fX4x8h5NwI
 
 {
   "type": "OUTCOME",
-  "title": "Alcohol Drinks"
+  "title": "Alcohol Drinks 1"
 }
 
 ###
@@ -59,7 +59,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpY
 
 DELETE http://localhost:8080/groups
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2NTY2OTcxMDZ9.D7ANNPVbHM3Ct_ONn3sbQ7XgLh7Bmnt_lI72c6THJ90
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTY1Njc5MzczNX0.4i33hH9nw8OVXwWiLzyzDGu7FUsIDGuK8fX4x8h5NwI
 
 {
   "groupId":1
@@ -69,18 +69,18 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpY
 
 
 GET http://localhost:8080/transactions
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2NTY2OTQzMzN9.7bRzMbhG5qNIWyCMAE0ofMwIW9Ffw6y3pmCBskvjDJg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTY1Njc5MzczNX0.4i33hH9nw8OVXwWiLzyzDGu7FUsIDGuK8fX4x8h5NwI
 ###
 
 GET http://localhost:8080/transactions/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2NTY2OTQzMzN9.7bRzMbhG5qNIWyCMAE0ofMwIW9Ffw6y3pmCBskvjDJg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTY1Njc5MzczNX0.4i33hH9nw8OVXwWiLzyzDGu7FUsIDGuK8fX4x8h5NwI
 
 
 ###
 
 PUT http://localhost:8080/transactions
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2NTY2OTQzMzN9.7bRzMbhG5qNIWyCMAE0ofMwIW9Ffw6y3pmCBskvjDJg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTY1Njc5MzczNX0.4i33hH9nw8OVXwWiLzyzDGu7FUsIDGuK8fX4x8h5NwI
 
 {
   "id": 6,
@@ -95,10 +95,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpY
 
 POST http://localhost:8080/transactions
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2NTY2OTcxMDZ9.D7ANNPVbHM3Ct_ONn3sbQ7XgLh7Bmnt_lI72c6THJ90
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTY1Njc5MzczNX0.4i33hH9nw8OVXwWiLzyzDGu7FUsIDGuK8fX4x8h5NwI
 
 {
-  "groupId": 3,
+  "groupId": 10,
   "transactionDate": "2022-06-21",
   "amount": 300,
   "comment": "telia"
@@ -109,7 +109,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpY
 
 DELETE http://localhost:8080/transactions
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2NTY2OTcxMDZ9.D7ANNPVbHM3Ct_ONn3sbQ7XgLh7Bmnt_lI72c6THJ90
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTY1Njc5MzczNX0.4i33hH9nw8OVXwWiLzyzDGu7FUsIDGuK8fX4x8h5NwI
 
 {
   "transactionId":1
@@ -118,7 +118,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpY
 ###
 
 GET http://localhost:8080/balance
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2NTY2OTQzMzN9.7bRzMbhG5qNIWyCMAE0ofMwIW9Ffw6y3pmCBskvjDJg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTY1Njc5MzczNX0.4i33hH9nw8OVXwWiLzyzDGu7FUsIDGuK8fX4x8h5NwI
 
 
 ###
