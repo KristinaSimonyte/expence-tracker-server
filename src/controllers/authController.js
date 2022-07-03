@@ -1,5 +1,5 @@
 const { makeResponce } = require('../helpers/responseHelper');
-const { hashPass, generateJwtToken } = require('../helpers/helpers');
+const { hashPass } = require('../helpers/helpers');
 const { userRegisterDB, userLoginDB } = require('../models/authModel');
 
 async function register(req, res) {
@@ -11,9 +11,8 @@ async function register(req, res) {
 async function login(req, res) {
   const { email, password } = req.body;
   const findResults = await userLoginDB(email, password);
-  return makeResponce(res, findResults, { token: findResults?.token });
+  return makeResponce(res, findResults, { token: findResults.token });
 }
-
 module.exports = {
   register,
   login,

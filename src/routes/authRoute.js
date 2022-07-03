@@ -9,5 +9,4 @@ const authRoutes = express.Router();
 authRoutes.post('/register', schemaValidation(userSchema), authController.register);
 authRoutes.post('/login', schemaValidation(userSchema), authController.login);
 
-
 module.exports = authRoutes;

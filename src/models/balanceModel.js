@@ -3,7 +3,7 @@ const { doQuery, systemError, noDataFound } = require('../helpers/dbHelpers');
 async function getBalance(userId) {
   try {
     const sqlQuery = `
-    SELECT total_income_amount, total_outcome_amount, (total_income_amount - total_outcome_amount) balance
+    SELECT total_income_amount, total_outcome_amount, round(total_income_amount - total_outcome_amount,2) balance
     FROM (select sum(if(STRCMP(iog.type, 'INCOME') = 0, amount, 0))  total_income_amount,
                  sum(if(STRCMP(iog.type, 'OUTCOME') = 0, amount, 0)) total_outcome_amount
           FROM transactions trns
