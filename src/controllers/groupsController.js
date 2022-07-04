@@ -1,4 +1,4 @@
-const { makeResponce } = require('../helpers/ResponseHelper');
+const { makeResponce } = require('../helpers/responseHelper');
 const { insertGroup, updateGroup, queryGroups, queryGroup, removeGroup } = require('../models/groupsModel');
 
 async function createGroup(req, resp) {
