@@ -1,4 +1,4 @@
-const { makeResponce } = require('../helpers/ResponseHelper');
+const { makeResponce } = require('../helpers/responseHelper');
 const { getBalance } = require('../models/balanceModel');
 
 async function getUserBalance(req, resp) {

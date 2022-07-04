@@ -1,4 +1,4 @@
-const { makeResponce } = require('../helpers/ResponseHelper');
+const { makeResponce } = require('../helpers/responseHelper');
 const {
   insertTransaction,
   updateTransaction,
